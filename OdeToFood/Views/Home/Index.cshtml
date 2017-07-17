@@ -1,0 +1,22 @@
+﻿@model IEnumerable<OdeToFood.Models.RestaurantListViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<hr />
+
+    <form action="/" method="get">
+                <input type="search" name="searchTerm" placeholder="Search By Name" autofocus class="form-control" />
+               <input type="submit" value="Go" class="btn btn-default" />
+            
+    </form>
+
+@foreach (var restaurant in Model) {
+    <div>
+        <h4><strong>@restaurant.Name</strong></h4>
+        <div>Rating: @restaurant.AverageRating</div>
+        <div>Total Reviews: @restaurant.TotalReviews</div>
+        <div>@restaurant.City, @restaurant.Country</div>
+
+        <hr />
+    </div>
+}
