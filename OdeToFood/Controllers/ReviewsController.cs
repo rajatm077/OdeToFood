@@ -10,12 +10,12 @@ namespace OdeToFood.Controllers {
         private OdeToFoodDB _db = new OdeToFoodDB();
         // GET: Reviews
         public ActionResult Index([Bind(Prefix = "id")] int restaurantId) {
-
-            var reviews = _db.Reviews.Find(restaurantId);
-            if (true) {
-
+            var restaurant = _db.Restaurants.Find(restaurantId);
+            if (restaurant != null) {
+                return View(restaurant);
+            } else {
+                return HttpNotFound(); 
             }
-            return View(reviews);
         }
 
         protected override void Dispose(bool disposing) {
