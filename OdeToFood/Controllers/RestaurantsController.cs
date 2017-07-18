@@ -8,35 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using OdeToFood.Models;
 
-namespace OdeToFood.Controllers
-{
-    public class RestaurantsController : Controller
-    {
+namespace OdeToFood.Controllers {
+    public class RestaurantsController : Controller {
         private OdeToFoodDB db = new OdeToFoodDB();
 
         // GET: Restaurants
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             return View(db.Restaurants.ToList());
         }
 
-        // GET: Restaurants/Details/5
-        //public ActionResult Details(int? id) {
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Restaurant restaurant = db.Restaurants.Find(id);
-        //    if (restaurant == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(restaurant);
-        //}
-
         // GET: Restaurants/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             return View();
         }
 
@@ -45,10 +27,8 @@ namespace OdeToFood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,City,Country")] Restaurant restaurant)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "Id,Name,City,Country")] Restaurant restaurant) {
+            if (ModelState.IsValid) {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -58,15 +38,12 @@ namespace OdeToFood.Controllers
         }
 
         // GET: Restaurants/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Restaurant restaurant = db.Restaurants.Find(id);
-            if (restaurant == null)
-            {
+            if (restaurant == null) {
                 return HttpNotFound();
             }
             return View(restaurant);
@@ -77,10 +54,8 @@ namespace OdeToFood.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,City,Country")] Restaurant restaurant)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "Id,Name,City,Country")] Restaurant restaurant) {
+            if (ModelState.IsValid) {
                 db.Entry(restaurant).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,15 +64,12 @@ namespace OdeToFood.Controllers
         }
 
         // GET: Restaurants/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Restaurant restaurant = db.Restaurants.Find(id);
-            if (restaurant == null)
-            {
+            if (restaurant == null) {
                 return HttpNotFound();
             }
             return View(restaurant);
@@ -106,18 +78,15 @@ namespace OdeToFood.Controllers
         // POST: Restaurants/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
+        public ActionResult DeleteConfirmed(int id) {
             Restaurant restaurant = db.Restaurants.Find(id);
             db.Restaurants.Remove(restaurant);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);
