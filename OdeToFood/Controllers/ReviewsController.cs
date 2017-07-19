@@ -14,9 +14,9 @@ namespace OdeToFood.Controllers {
         public ActionResult Index([Bind(Prefix = "id")] int restaurantId) {
             var restaurant = _db.Restaurants.Find(restaurantId);
             if (restaurant != null) {
-                return View(restaurant); 
+                return View(restaurant);
             } else {
-                return HttpNotFound(); 
+                return HttpNotFound();
             }
         }
 
@@ -33,7 +33,7 @@ namespace OdeToFood.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Edit(RestaurantReview review) {
+        public ActionResult Edit([Bind(Exclude = "ReviewerName")]RestaurantReview review) {
             if (ModelState.IsValid) {
                 _db.Entry(review).State = EntityState.Modified;
                 _db.SaveChanges();
@@ -45,7 +45,7 @@ namespace OdeToFood.Controllers {
         [HttpGet]
         public ActionResult Create(int restaurantId) {
             ViewBag.RestaurantId = restaurantId;
-            return View();            
+            return View();
         }
 
         [HttpPost]
