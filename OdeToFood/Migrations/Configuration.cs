@@ -11,7 +11,13 @@ namespace OdeToFood.Migrations {
             context.Restaurants.AddOrUpdate(
                 r => r.Name,
                 new Restaurant { Name = "JW Marriott", City = "Chandigarh", Country = "India" }
+
+            );
+            for (int i = 0; i < 1000; i++) {
+                context.Restaurants.AddOrUpdate(r => r.Name,
+                    new Restaurant { Name = i.ToString(), City = "Nowhere", Country = "India" }
                 );
+            }
         }
     }
 }
