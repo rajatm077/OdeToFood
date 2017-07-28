@@ -33,11 +33,16 @@ namespace OdeToFood.Controllers {
                                   City = r.City,
                                   Country = r.Country,
                                   TotalReviews = r.Reviews.Count,
-                                  AverageRating = (r.Reviews.Count > 0) ? 
+                                  AverageRating = (r.Reviews.Count > 0) ?
                                   r.Reviews.Average(rev => rev.Rating) : 0.0
                               });
+            if (Request.IsAjaxRequest()) {
+                return PartialView("_Restaurant", restaurants);
+            }
 
-                return View(restaurants);
+
+
+            return View(restaurants);
         }
 
         public ActionResult About() {
