@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/OdeToFood/Views/Home/_Restaurants.cshtml
