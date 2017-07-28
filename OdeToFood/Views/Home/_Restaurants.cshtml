@@ -1,0 +1,13 @@
+﻿@model IEnumerable<OdeToFood.Models.RestaurantListViewModel>
+
+<div id="restaurantList">
+    @foreach (var restaurant in Model) {
+        <div>
+            <h4><strong>@restaurant.Name</strong></h4>
+            <div>Rating: @restaurant.AverageRating</div>
+            <div>Total Reviews: @restaurant.TotalReviews</div>
+            <div>@restaurant.City, @restaurant.Country</div>
+            <hr />
+        </div>
+    }
+</div>

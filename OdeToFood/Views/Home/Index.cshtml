@@ -4,7 +4,7 @@
 }
 <hr />
 
-@using (Ajax.BeginForm(
+@*@using (Ajax.BeginForm(
 
         new AjaxOptions {
             HttpMethod = "get",
@@ -14,6 +14,15 @@
         
     <input type="search" name="searchTerm" placeholder="Enter name" autofocus autocomplete="on"/>
     <input type="submit" name="submit" value="GO" />
-}
+}*@
+
+
+<form action="@Url.Action("Index")" method="post" 
+      data-otf-ajax="true"
+      data-otf-target="#restaurantList">
+
+    <input type="search" name="searchTerm" placeholder="Enter name" autofocus autocomplete="on" />
+    <input type="submit" name="submit" value="GO" />
+</form>
 
 @Html.Partial("_Restaurants", Model)
