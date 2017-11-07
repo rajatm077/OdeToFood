@@ -37,7 +37,10 @@ namespace OdeToFood.Controllers {
                                   r.Reviews.Average(rev => rev.Rating) : 0.0
                               });
 
-                return View(restaurants);
+            if (Request.IsAjaxRequest()) {
+                return PartialView("_Restaurants", restaurants);
+            }
+            return View(restaurants);
         }
 
         public ActionResult About() {
