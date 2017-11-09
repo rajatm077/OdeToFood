@@ -4,19 +4,22 @@
 }
 <hr />
 
-@*<form action="/" method="get">
-    <input type="search" name="searchTerm" placeholder="Search By Name" autofocus class="form-control" />
-    <input type="submit" value="Go" class="btn btn-default" />
+@*<form action="/" method="get">*@
 
-</form>*@
+    <form action="@Url.Action("Index")" method="get" data-otf-ajax="true"
+          data-otf-target="#restaurantList"> 
 
-@using (Ajax.BeginForm(new AjaxOptions {
-    HttpMethod = "get",
+        <input type="search" name="searchTerm" placeholder="Search By Name" autofocus class="form-control" />
+        <input type="submit" value="Go" class="btn btn-default" />
+    </form>
+
+@*@using (Ajax.BeginForm(new AjaxOptions {
+    HttpMethod = "Get",
     InsertionMode = InsertionMode.Replace,
     UpdateTargetId = "restaurantList"
 })) {
     <input type="search" name="searchTerm" placeholder="Search by name" autofocus class="form-control" />
     <input type="submit" value="Go" class="btn btn-default" />
-}
+}*@
 
 @Html.Partial("_Restaurants", Model)
