@@ -7,8 +7,8 @@ namespace OdeToFood {
         public static void RegisterBundles(BundleCollection bundles) {
             bundles.Add(new ScriptBundle("~/bundles/otf").Include(
                 "~/Scripts/jquery-{version}.js",
-                "~/Scripts/jquery-migrate-3.0.1.min.js",
-                "~/Scripts/jquery-ui-{version}.js",
+                "~/Scripts/jquery-migrate-{version}.min.js",
+                "~/Scripts/jquery-ui-{version}.js",             
                 "~/Scripts/jquery.unobtrusive*",
                 "~/Scripts/otf.js",
                 "~/Scripts/jquery.validate*"));
@@ -30,6 +30,7 @@ namespace OdeToFood {
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/PagedList.css",
                       "~/Content/site.css"));
         }
     }
