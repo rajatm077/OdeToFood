@@ -21,6 +21,14 @@ namespace OdeToFood.Controllers {
             return Json(restaurants, JsonRequestBehavior.AllowGet);
         }
 
+        [ChildActionOnly]
+        [OutputCache(Duration = 60)]
+        public ActionResult SayHello()
+        {
+            return Content("Hello");
+        }
+
+        [OutputCache(Duration = 10)]
         public ActionResult Index(string searchTerm = null, int page = 1) {
             /*
             var restaurants = from r in _db.Restaurants
